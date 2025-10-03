@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
+    <left>
+        <VBox spacing="8" prefWidth="240" BorderPane.alignment="CENTER">
+            <Label text="Exercices" style="-fx-font-weight: bold;">
+                <padding>
+                    <Insets top="8" right="0" bottom="0" left="8"/>
+                </padding>
+            </Label>
+
+            <ListView fx:id="listExercices" prefWidth="220" VBox.vgrow="ALWAYS" />
+
+            <HBox spacing="8">
+                <padding>
+                    <Insets top="8" right="8" bottom="8" left="8"/>
+                </padding>
+                <Button text="Ajouter ex." onAction="#ouvrirDialogAjoutExercice" />
+                <Button text="Suppr." onAction="#supprimerExercice" />
+            </HBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <LineChart fx:id="lineChart" prefHeight="320" prefWidth="600" title="Évolution">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxis" label="Date" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Poids (kg)" />
+                </yAxis>
+            </LineChart>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <DatePicker fx:id="datePicker" promptText="Date" />
+                <TextField fx:id="poidsField" promptText="Poids (kg)"/>
+                <TextField fx:id="repsField" promptText="Répétitions"/>
+                <Button text="Ajouter" onAction="#ajouterPerformance"/>
+                <Label fx:id="messageLabel" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
