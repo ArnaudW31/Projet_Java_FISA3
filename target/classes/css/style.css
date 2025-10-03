@@ -1,0 +1,44 @@
+/* Couleur de fond de la fenêtre */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f0f2f5;
+}
+
+/* VBox / HBox padding et spacing */
+.vbox, .hbox {
+    -fx-padding: 10;
+    -fx-spacing: 8;
+}
+
+/* ListView style */
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* Boutons */
+.button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 14px;
+}
+
+/* LineChart */
+.chart-plot-background {
+    -fx-background-color: #ffffff;
+}
+.chart-legend {
+    -fx-background-color: transparent;
+}

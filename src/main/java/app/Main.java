@@ -20,6 +20,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getResource("view/main.fxml"));
         Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Suivi Musculation");
         stage.show();
