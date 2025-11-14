@@ -1,5 +1,5 @@
 package model;
 
-public class Traction extends Exercice {
+public class Traction extends ExercicePoidsDuCorps {
     
 }

@@ -1,5 +1,5 @@
 package model;
 
-public class TirageHorizontal extends Exercice {
+public class TirageHorizontal extends ExerciceMachine {
     
 }

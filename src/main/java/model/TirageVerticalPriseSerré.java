@@ -1,5 +1,5 @@
 package model;
 
-public class TirageVerticalPriseSerré extends Exercice {
+public class TirageVerticalPriseSerré extends ExerciceMachine {
     
 }

@@ -1,5 +1,5 @@
 package model;
 
-public class DeveloppeIncline extends Exercice {
+public class DeveloppeIncline extends ExerciceAvecHalteres {
     
 }

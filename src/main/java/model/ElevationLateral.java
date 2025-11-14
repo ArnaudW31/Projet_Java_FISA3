@@ -1,5 +1,5 @@
 package model;
 
-public class ElevationLateral extends Exercice {
+public class ElevationLateral extends ExercicePoulie {
     
 }

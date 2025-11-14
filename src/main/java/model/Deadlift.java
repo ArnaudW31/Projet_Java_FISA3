@@ -1,5 +1,5 @@
 package model;
 
-public class Deadlift extends Exercice{
+public class Deadlift extends ExerciceAvecHalteres{
     
 }

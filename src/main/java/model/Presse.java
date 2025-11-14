@@ -1,5 +1,5 @@
 package model;
 
-public class Presse extends Exercice {
+public class Presse extends ExerciceMachine {
     
 }
