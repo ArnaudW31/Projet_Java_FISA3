@@ -49,17 +49,53 @@ public class MainController {
         serie.setName(ex.getNom());
 
         List<Performance> perfs = PerformanceDAO.getByExerciceId(ex.getId());
-
-        // Tri par date au cas où (déjà ORDER BY date, mais sécurité)
         perfs.sort(Comparator.comparing(Performance::getDate));
 
         for (Performance p : perfs) {
-            serie.getData().add(new XYChart.Data<>(p.getDate().toString(), p.getPoids()));
+            // Format de date plus lisible
+            String dateFormatee = p.getDate().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy"));
+            XYChart.Data<String, Number> data = new XYChart.Data<>(dateFormatee, p.getPoids());
+            serie.getData().add(data);
         }
 
         lineChart.getData().add(serie);
 
-        // Ajuster axe Y (optionnel) : JavaFX NumberAxis automatique se charge
+        // Installer les tooltips après que le graphique soit rendu
+        Platform.runLater(() -> {
+            try {
+                Thread.sleep(20); // Petite attente pour être sûr que les nodes sont créés
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+            for (int i = 0; i < serie.getData().size(); i++) {
+                XYChart.Data<String, Number> data = serie.getData().get(i);
+                Performance p = perfs.get(i);
+                
+                if (data.getNode() != null) {
+                    String dateFormatee = p.getDate().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    String txt = String.format("📅 %s\n💪 Poids: %.1f kg\n🔁 Reps: %d",
+                                            dateFormatee,
+                                            p.getPoids(),
+                                            p.getRepetitions());
+                    
+                    Tooltip tt = new Tooltip(txt);
+                    tt.setStyle("-fx-font-size: 13px; -fx-padding: 8px; -fx-background-color: rgba(0,0,0,0.75); -fx-text-fill: white; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: #ff6600; -fx-border-width: 1px;");
+                    tt.setShowDelay(javafx.util.Duration.millis(50));
+                    Tooltip.install(data.getNode(), tt);
+
+                    data.getNode().getStyleClass().add("chart-line-symbol");
+                    data.getNode().setOnMouseEntered(ev -> {
+                        data.getNode().setScaleX(1.5);
+                        data.getNode().setScaleY(1.5);
+                    });
+                    data.getNode().setOnMouseExited(ev -> {
+                        data.getNode().setScaleX(1.0);
+                        data.getNode().setScaleY(1.0);
+                    });
+                }
+            }
+        });
     }
 
     @FXML
