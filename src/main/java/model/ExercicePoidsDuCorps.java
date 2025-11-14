@@ -5,4 +5,9 @@ public abstract class ExercicePoidsDuCorps extends Exercice {
 
     public boolean isLeste() { return leste; }
     public void setLeste(boolean nvLeste) { this.leste = nvLeste; }
+
+    public ExercicePoidsDuCorps(int id, String nom, String categorie, String description, boolean leste) {
+        super(id, nom, categorie, description);
+        this.leste = leste;
+    }
 }

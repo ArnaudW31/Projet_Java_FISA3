@@ -9,4 +9,10 @@ public abstract class ExercicePoulie extends Exercice {
 
     public String getPrisePoulie() { return prisePoulie; }
     public void setNom(String nvPrisePoulie) { this.prisePoulie = nvPrisePoulie; }
+
+    public ExercicePoulie(int id, String nom, String categorie, String description, String prisePoulie, int hauteurPoulie) {
+        super(id, nom, categorie, description);
+        this.prisePoulie = prisePoulie;
+        this.hauteurPoulie = hauteurPoulie;
+    }
 }
