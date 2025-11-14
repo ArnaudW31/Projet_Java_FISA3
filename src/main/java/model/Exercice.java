@@ -9,12 +9,12 @@ public abstract class Exercice {
     private List<Muscle> muscles;
     private String description;
 
-    public Exercice() {}
+    // public Exercice() {}
 
-    public Exercice(int id, String nom, String categorie, String description) {
+    public Exercice(int id, String nom, List<Muscle> muscles, String description) {
         this.id = id;
         this.nom = nom;
-        this.categorie = categorie;
+        this.muscles = muscles;
         this.description = description;
     }
 
