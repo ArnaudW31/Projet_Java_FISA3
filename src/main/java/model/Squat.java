@@ -1,5 +1,5 @@
 package model;
 
-public class Squat extends Exercice {
+public class Squat extends ExerciceAvecHalteres {
     
 }

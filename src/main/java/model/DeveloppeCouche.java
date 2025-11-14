@@ -1,5 +1,5 @@
 package model;
 
-public class DeveloppeCouche extends Exercice {
+public class DeveloppeCouche extends ExerciceAvecHalteres {
     
 }

@@ -1,5 +1,5 @@
 package model;
 
-public class CurlMarteauPoulie extends Exercice {
+public class CurlMarteauPoulie extends ExercicePoulie {
     
 }

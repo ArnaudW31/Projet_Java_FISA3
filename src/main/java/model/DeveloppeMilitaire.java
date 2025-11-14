@@ -1,5 +1,5 @@
 package model;
 
-public class DeveloppeMilitaire extends Exercice {
+public class DeveloppeMilitaire extends ExerciceAvecHalteres {
     
 }

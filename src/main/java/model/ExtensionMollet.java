@@ -1,5 +1,5 @@
 package model;
 
-public class ExtensionMollet extends Exercice {
+public class ExtensionMollet extends ExercicePoidsDuCorps {
     
 }
