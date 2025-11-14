@@ -1,7 +1,3 @@
-dao\ExerciceDAO.class
 model\Exercice.class
-app\Main.class
-dao\PerformanceDAO.class
-dao\Database.class
-model\Performance.class
-controller\MainController.class
+model\ExerciceMachine.class
+model\Muscle.class
