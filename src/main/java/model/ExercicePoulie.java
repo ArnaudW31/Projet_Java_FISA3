@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public abstract class ExercicePoulie extends Exercice {
     private String prisePoulie;
     private int hauteurPoulie;
@@ -10,8 +12,8 @@ public abstract class ExercicePoulie extends Exercice {
     public String getPrisePoulie() { return prisePoulie; }
     public void setNom(String nvPrisePoulie) { this.prisePoulie = nvPrisePoulie; }
 
-    public ExercicePoulie(int id, String nom, String categorie, String description, String prisePoulie, int hauteurPoulie) {
-        super(id, nom, categorie, description);
+    public ExercicePoulie(int id, String nom, List<Muscle> muscles, String description, String prisePoulie, int hauteurPoulie) {
+        super(id, nom, muscles, description);
         this.prisePoulie = prisePoulie;
         this.hauteurPoulie = hauteurPoulie;
     }

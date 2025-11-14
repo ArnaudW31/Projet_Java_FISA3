@@ -1,12 +1,13 @@
 package model;
 
 import javafx.scene.Scene;
+import java.util.List;
 
 public class Traction extends ExercicePoidsDuCorps {
 
     //constructeur
-    public Traction(int id, String nom, String categorie, String description, boolean leste) {
-        super(id, nom, categorie, description, leste);
+    public Traction(int id, String nom, List<Muscle> muscles, String description, boolean leste) {
+        super(id, nom, muscles, description, leste);
     }
 
     public Scene showExplanation() {
