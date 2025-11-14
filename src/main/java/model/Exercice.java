@@ -8,14 +8,14 @@ public abstract class Exercice {
     private String categorie;
     private String description;
 
-    public Exercice() {}
+    // public Exercice() {}
 
-    public Exercice(int id, String nom, String categorie, String description) {
-        this.id = id;
-        this.nom = nom;
-        this.categorie = categorie;
-        this.description = description;
-    }
+    // public Exercice(int id, String nom, String categorie, String description) {
+    //     this.id = id;
+    //     this.nom = nom;
+    //     this.categorie = categorie;
+    //     this.description = description;
+    // }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

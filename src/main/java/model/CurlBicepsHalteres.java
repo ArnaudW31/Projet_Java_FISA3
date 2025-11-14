@@ -1,5 +1,5 @@
 package model;
 
-public class CurlBicepsHalteres extends Exercice {
+public class CurlBicepsHalteres extends ExerciceAvecHalteres {
     
 }

@@ -1,5 +1,5 @@
 package model;
 
-public class Adducteur extends Exercice {
+public class Adducteur extends ExerciceMachine {
     
 }
