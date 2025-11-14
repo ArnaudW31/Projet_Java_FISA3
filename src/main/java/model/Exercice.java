@@ -1,6 +1,8 @@
 package model;
 
-public class Exercice {
+import javafx.scene.Scene;
+
+public abstract class Exercice {
     private int id;
     private String nom;
     private String categorie;
@@ -32,4 +34,6 @@ public class Exercice {
         // utilisé pour ListView
         return nom + (categorie != null && !categorie.isEmpty() ? " (" + categorie + ")" : "");
     }
+
+    public abstract Scene showExplanation();
 }

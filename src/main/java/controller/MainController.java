@@ -58,8 +58,6 @@ public class MainController {
         }
 
         lineChart.getData().add(serie);
-
-        // Ajuster axe Y (optionnel) : JavaFX NumberAxis automatique se charge
     }
 
     @FXML
