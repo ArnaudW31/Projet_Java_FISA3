@@ -106,45 +106,45 @@ public class MainController {
         }
     }
 
-    // Méthodes supplémentaires : ajouter/supprimer exercice (optionnel)
-    @FXML
-    private void ouvrirDialogAjoutExercice() {
-        // Implémentation minimale : ouvrir un dialog simple pour ajouter un exercice.
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Ajouter exercice");
-        dialog.setHeaderText("Nom de l'exercice:");
-        dialog.setContentText("Nom:");
-        dialog.showAndWait().ifPresent(name -> {
-            if (name.trim().isEmpty()) return;
-            // Insert minimal via DB
-            try (var conn = dao.Database.getConnection();
-                 var ps = conn.prepareStatement("INSERT INTO exercice (nom) VALUES (?)")) {
-                ps.setString(1, name.trim());
-                ps.executeUpdate();
-                // recharger la liste
-                listExercices.getItems().setAll(ExerciceDAO.getAll());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+    // // Méthodes supplémentaires : ajouter/supprimer exercice (optionnel)
+    // @FXML
+    // private void ouvrirDialogAjoutExercice() {
+    //     // Implémentation minimale : ouvrir un dialog simple pour ajouter un exercice.
+    //     TextInputDialog dialog = new TextInputDialog();
+    //     dialog.setTitle("Ajouter exercice");
+    //     dialog.setHeaderText("Nom de l'exercice:");
+    //     dialog.setContentText("Nom:");
+    //     dialog.showAndWait().ifPresent(name -> {
+    //         if (name.trim().isEmpty()) return;
+    //         // Insert minimal via DB
+    //         try (var conn = dao.Database.getConnection();
+    //              var ps = conn.prepareStatement("INSERT INTO exercice (nom) VALUES (?)")) {
+    //             ps.setString(1, name.trim());
+    //             ps.executeUpdate();
+    //             // recharger la liste
+    //             listExercices.getItems().setAll(ExerciceDAO.getAll());
+    //         } catch (Exception e) {
+    //             e.printStackTrace();
+    //         }
+    //     });
+    // }
 
-    @FXML
-    private void supprimerExercice() {
-        Exercice ex = listExercices.getSelectionModel().getSelectedItem();
-        if (ex == null) return;
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + ex.getNom() + " ?", ButtonType.YES, ButtonType.NO);
-        confirm.showAndWait().ifPresent(bt -> {
-            if (bt == ButtonType.YES) {
-                try (var conn = dao.Database.getConnection();
-                     var ps = conn.prepareStatement("DELETE FROM exercice WHERE id_exercice = ?")) {
-                    ps.setInt(1, ex.getId());
-                    ps.executeUpdate();
-                    listExercices.getItems().setAll(ExerciceDAO.getAll());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    // @FXML
+    // private void supprimerExercice() {
+    //     Exercice ex = listExercices.getSelectionModel().getSelectedItem();
+    //     if (ex == null) return;
+    //     Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + ex.getNom() + " ?", ButtonType.YES, ButtonType.NO);
+    //     confirm.showAndWait().ifPresent(bt -> {
+    //         if (bt == ButtonType.YES) {
+    //             try (var conn = dao.Database.getConnection();
+    //                  var ps = conn.prepareStatement("DELETE FROM exercice WHERE id_exercice = ?")) {
+    //                 ps.setInt(1, ex.getId());
+    //                 ps.executeUpdate();
+    //                 listExercices.getItems().setAll(ExerciceDAO.getAll());
+    //             } catch (Exception e) {
+    //                 e.printStackTrace();
+    //             }
+    //         }
+    //     });
+    // }
 }

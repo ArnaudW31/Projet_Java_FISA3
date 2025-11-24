@@ -20,14 +20,14 @@
                 <padding>
                     <Insets top="8" right="8" bottom="8" left="8"/>
                 </padding>
-                <Button text="Ajouter ex." onAction="#ouvrirDialogAjoutExercice" />
-                <Button text="Suppr." onAction="#supprimerExercice" />
+                <!-- <Button text="Ajouter ex." onAction="#ouvrirDialogAjoutExercice" />
+                <Button text="Suppr." onAction="#supprimerExercice" /> -->
             </HBox>
         </VBox>
     </left>
 
     <center>
-        <VBox spacing="12">
+        <VBox fx:id="chartContainer" spacing="12">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>

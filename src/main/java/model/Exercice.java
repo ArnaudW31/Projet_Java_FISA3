@@ -1,6 +1,7 @@
 package model;
 
-import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+
 import java.util.List;
 
 public abstract class Exercice {
@@ -36,5 +37,5 @@ public abstract class Exercice {
         return nom;
     }
 
-    public abstract Scene showExplanation();
+    public abstract VBox showExplanation();
 }
