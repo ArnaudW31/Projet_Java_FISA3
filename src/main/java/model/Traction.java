@@ -1,12 +1,11 @@
 package model;
 
 import javafx.scene.Scene;
-import java.util.List;
 
 public class Traction extends ExercicePoidsDuCorps {
 
     //constructeur
-    public Traction(int id, String nom, List<Muscle> muscles, String description, boolean leste) {
+    public Traction(int id, String nom) {
         super(id, nom,
               java.util.Arrays.asList(
                   new Muscle("Grand dorsal", "path/to/grand_dorsal_image.png"),
