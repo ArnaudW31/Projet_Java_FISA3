@@ -8,7 +8,7 @@ public class ExtentionTricepsPoulie extends ExercicePoulie {
     public ExtentionTricepsPoulie(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Triceps", "images/muscles/triceps.png")
+            new Muscle("Triceps", ExtentionTricepsPoulie.class.getResource("/images/muscles/triceps.png").toExternalForm())
         ),
         "1. Placez-vous debout face à la poulie haute, les pieds écartés à la largeur des épaules.\n" +
         "2. Saisissez la poignée de la poulie avec une prise en pronation (paumes vers le bas).\n" +

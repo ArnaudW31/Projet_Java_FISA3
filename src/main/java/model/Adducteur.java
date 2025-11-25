@@ -5,12 +5,12 @@ import javafx.scene.layout.VBox;
 public class Adducteur extends ExerciceMachine {
     
     //constructeur
-    public Adducteur(int id, String nom) {
+    public Adducteur(int id, String nom) { 
         super(id, nom,
             java.util.Arrays.asList(
-                new Muscle("Grand dorsal", "images/muscles/grand_dorsal.png"),
-                new Muscle("Biceps brachial", "images/muscles/biceps_brachial.png"),
-                new Muscle("Trapèze moyen", "images/muscles/trapeze_moyen.png")
+                new Muscle("Grand dorsal", Adducteur.class.getResource("/images/muscles/grand_dorsal.png").toExternalForm()),
+                new Muscle("Biceps brachial", Adducteur.class.getResource("/images/muscles/biceps_brachial.png").toExternalForm()),
+                new Muscle("Trapèze moyen", Adducteur.class.getResource("/images/muscles/trapeze_moyen.png").toExternalForm())
             ),
             "1. Asseyez-vous devant la machine de tirage horizontal avec une prise en pronation (paumes vers le bas) sur la barre.\n" +
             "2. Tirez la barre vers votre abdomen en gardant le dos droit et les coudes près du corps.\n" +

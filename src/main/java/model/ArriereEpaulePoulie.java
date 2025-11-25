@@ -6,9 +6,9 @@ public class ArriereEpaulePoulie extends ExercicePoulie {
     public ArriereEpaulePoulie(int id, String nom){
     super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Biceps", "/images/muscles/biceps.png"),
-            new Muscle("Brachial", "/images/muscles/brachial.png"),
-            new Muscle("Avant-bras", "/images/muscles/avant_bras.png")
+            new Muscle("Biceps", ArriereEpaulePoulie.class.getResource("/images/muscles/biceps.png").toExternalForm()),
+            new Muscle("Brachial", ArriereEpaulePoulie.class.getResource("/images/muscles/brachial.png").toExternalForm()),
+            new Muscle("Avant-bras", ArriereEpaulePoulie.class.getResource("/images/muscles/avant_bras.png").toExternalForm())
         ),
         "1. Saisir la poignée de la poulie avec une prise marteau (paume de main face à soi).\n" +
         "2. Garder le coude près du corps et fléchir l'avant-bras pour amener la poignée vers l'épaule.\n" +

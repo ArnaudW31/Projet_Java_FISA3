@@ -8,8 +8,8 @@ public class Traction extends ExercicePoidsDuCorps {
     public Traction(int id, String nom) {
         super(id, nom,
               java.util.Arrays.asList(
-                  new Muscle("Grand dorsal", "path/to/grand_dorsal_image.png"),
-                  new Muscle("Biceps brachial", "path/to/biceps_brachial_image.png")
+                  new Muscle("Grand dorsal", Traction.class.getResource("/images/muscles/grand_dorsal.png").toExternalForm()),
+                  new Muscle("Biceps brachial", Traction.class.getResource("/images/muscles/biceps_brachial.png").toExternalForm())
               ),
               "1. Saisissez la barre avec une prise en supination (paumes vers vous), les mains écartées à la largeur des épaules.\n" +
                "2. Suspendez-vous à la barre avec les bras complètement tendus et les jambes croisées derrière vous.\n" +

@@ -8,8 +8,8 @@ public class TiragePoulieHaute extends ExercicePoulie {
     public TiragePoulieHaute(int id, String nom) {
         super(id, nom, 
         java.util.Arrays.asList(
-            new Muscle("Grand dorsal", "path/to/grand_dorsal_image"),
-            new Muscle("Biceps brachial", "path/to/biceps_brachial_image")
+            new Muscle("Grand dorsal", TiragePoulieHaute.class.getResource("/images/muscles/grand_dorsal.png").toExternalForm()),
+            new Muscle("Biceps brachial", TiragePoulieHaute.class.getResource("/images/muscles/biceps_brachial.png").toExternalForm())
         ), 
         "1. Asseyez-vous à la machine de tirage à la poulie haute, les pieds bien posés sur le sol.\n" +
         "2. Saisissez la barre avec une prise large, les paumes vers l'avant.\n" +

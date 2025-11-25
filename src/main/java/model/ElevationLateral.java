@@ -8,8 +8,8 @@ public class ElevationLateral extends ExercicePoulie {
     public ElevationLateral(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Deltoide", "path/to/deltoide_image.png"),
-            new Muscle("Trapèze", "path/to/trapeze_image.png")
+            new Muscle("Deltoide", ElevationLateral.class.getResource("/images/muscles/deltoides.png").toExternalForm()),
+            new Muscle("Trapèze", ElevationLateral.class.getResource("/images/muscles/trapeze.png").toExternalForm())
         ),
         "1. Placez-vous debout, les pieds écartés à la largeur des épaules, " +
         "en tenant la poignée de la poulie avec une prise neutre (paume vers l'intérieur).\n" +

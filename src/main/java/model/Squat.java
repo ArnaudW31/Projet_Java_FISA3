@@ -8,9 +8,9 @@ public class Squat extends ExerciceAvecHalteres {
     public Squat(int id, String nom) {
         super(id, nom,
             java.util.Arrays.asList(
-                new Muscle("Quadriceps", "images/muscles/quadriceps.png"),
-                new Muscle("Fessiers", "images/muscles/fessiers.png"),
-                new Muscle("Ischio-jambiers", "images/muscles/ischio_jambiers.png")
+                new Muscle("Quadriceps", Squat.class.getResource("/images/muscles/quadriceps.png").toExternalForm()),
+                new Muscle("Fessiers", Squat.class.getResource("/images/muscles/fessiers.png").toExternalForm()),
+                new Muscle("Ischio-jambiers", Squat.class.getResource("/images/muscles/ischio_jambiers.png").toExternalForm())
             ),
             "1. Placez-vous debout, les pieds écartés à la largeur des épaules, en tenant les haltères à vos côtés.\n" +
             "2. Fléchissez les genoux et les hanches pour descendre en position accroupie, en gardant le dos droit.\n" +

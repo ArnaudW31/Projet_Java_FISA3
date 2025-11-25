@@ -8,9 +8,9 @@ public class DeveloppeCouche extends ExerciceAvecHalteres {
     public DeveloppeCouche(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Pectoraux", "path/to/pectoraux_image.png"),
-            new Muscle("Triceps", "path/to/triceps_image.png"),
-            new Muscle("Deltoides", "path/to/deltoides_image.png")
+            new Muscle("Pectoraux", DeveloppeCouche.class.getResource("/images/muscles/pectoraux.png").toExternalForm()),
+            new Muscle("Triceps", DeveloppeCouche.class.getResource("/images/muscles/triceps.png").toExternalForm()),
+            new Muscle("Deltoides", DeveloppeCouche.class.getResource("/images/muscles/deltoides.png").toExternalForm())
         ),
         "1. Allongez-vous sur le dos sur un banc plat avec une haltère dans chaque main.\n" +
         "2. Tenez les haltères au niveau de la poitrine, les paumes vers l'avant.\n" +

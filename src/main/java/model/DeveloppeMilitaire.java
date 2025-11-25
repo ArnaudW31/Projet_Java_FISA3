@@ -8,8 +8,8 @@ public class DeveloppeMilitaire extends ExerciceAvecHalteres {
     public DeveloppeMilitaire(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Deltoide", "path/to/deltoide_image"),
-            new Muscle("Triceps", "path/to/triceps_image")
+            new Muscle("Deltoide", DeveloppeMilitaire.class.getResource("/images/muscles/deltoides.png").toExternalForm()),
+            new Muscle("Triceps", DeveloppeMilitaire.class.getResource("/images/muscles/triceps.png").toExternalForm())
         ),
         "1. Asseyez-vous sur un banc avec un dossier, les pieds à plat sur le sol.\n" +
         "2. Tenez une haltère dans chaque main au niveau des épaules, les paumes vers l'avant.\n" +

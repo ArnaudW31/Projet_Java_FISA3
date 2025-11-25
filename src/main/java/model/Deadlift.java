@@ -8,9 +8,9 @@ public class Deadlift extends ExerciceAvecHalteres{
     public Deadlift(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Dos", "path/to/dos_image.png"),
-            new Muscle("Jambes", "path/to/jambes_image.png"),
-            new Muscle("Fessiers", "path/to/fessiers_image.png")
+            new Muscle("Dos", Deadlift.class.getResource("/images/muscles/dos.png").toExternalForm()),
+            new Muscle("Jambes", Deadlift.class.getResource("/images/muscles/jambes.png").toExternalForm()),
+            new Muscle("Fessiers", Deadlift.class.getResource("/images/muscles/fessiers.png").toExternalForm())
         ),
         "1. Tenez-vous debout, les pieds écartés à la largeur des hanches, en tenant une barre devant vous.\n" +
         "2. Fléchissez les hanches et les genoux pour abaisser votre corps et saisir la barre avec une prise en pronation (paumes vers vous).\n" +

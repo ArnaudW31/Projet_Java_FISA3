@@ -8,7 +8,7 @@ public class ExtensionMollet extends ExercicePoidsDuCorps {
     public ExtensionMollet(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Mollets", "images/muscles/mollets.png")
+            new Muscle("Mollets", ExtensionMollet.class.getResource("/images/muscles/mollets.png").toExternalForm())
         ),
         "1. Tenez-vous debout, les pieds écartés à la largeur des épaules.\n" +
         "2. Montez lentement sur la pointe des pieds en contractant les mollets.\n" +

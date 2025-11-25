@@ -26,6 +26,7 @@ public class MainController {
     public void initialize() {
         // Charger les exercices depuis la BDD
         listExercices.getItems().setAll(ExerciceDAO.getAll());
+        System.out.println(listExercices.getItems().size());
 
         // Listener selection
         listExercices.getSelectionModel().selectedItemProperty().addListener((obs, oldEx, newEx) -> {
@@ -143,6 +144,18 @@ public class MainController {
             messageLabel.setText("Erreur lors de l'ajout.");
         }
     }
+
+    // Pour remplacer la vue centrale par la scène custom
+    // @FXML
+    // public void afficherCustomScene() {
+    //     rootPane.setCenter(getCustomScene());
+    // }
+
+    // // Pour revenir au graphique original
+    // @FXML
+    // public void afficherChart() {
+    //     rootPane.setCenter(chartContainer);
+    // }
 
     // // Méthodes supplémentaires : ajouter/supprimer exercice (optionnel)
     // @FXML
