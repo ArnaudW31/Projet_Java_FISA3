@@ -9,6 +9,7 @@ model\Adducteur.class
 model\ExerciceAvecHalteres.class
 model\ElevationLateral.class
 dao\Database.class
+controller\MainController$1.class
 model\ExtentionTricepsPoulie.class
 model\Deadlift.class
 controller\MainController.class

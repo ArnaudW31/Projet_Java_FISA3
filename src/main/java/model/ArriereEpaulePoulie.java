@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class ArriereEpaulePoulie extends ExercicePoulie {
@@ -17,6 +18,8 @@ public class ArriereEpaulePoulie extends ExercicePoulie {
     }
 
     public VBox showExplanation() {
-        return new VBox();
+        VBox box = new VBox(new Label("Gros caca !"));
+        box.setStyle("-fx-padding: 20;");
+        return box;
     }
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController" fx:id="rootPane">
     <left>
         <VBox spacing="8" prefWidth="240" BorderPane.alignment="CENTER">
             <Label text="Exercices" style="-fx-font-weight: bold;">
@@ -20,8 +20,8 @@
                 <padding>
                     <Insets top="8" right="8" bottom="8" left="8"/>
                 </padding>
-                <!-- <Button text="Ajouter ex." onAction="#ouvrirDialogAjoutExercice" />
-                <Button text="Suppr." onAction="#supprimerExercice" /> -->
+                <Button text="Graphique" onAction="#afficherChart"/>
+                <Button text="Explications" onAction="#afficherCustomScene"/>
             </HBox>
         </VBox>
     </left>
@@ -31,6 +31,16 @@
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
+            
+            <Label text="Muscles travaillés" style="-fx-font-weight: bold;">
+                <padding>
+                    <Insets top="8" right="0" bottom="0" left="8"/>
+                </padding>
+            </Label>
+
+            <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="225" prefWidth="600">
+                <ListView fx:id="listMuscles"  HBox.hgrow="ALWAYS"/>
+            </HBox>
 
             <LineChart fx:id="lineChart" prefHeight="320" prefWidth="600" title="Évolution">
                 <xAxis>

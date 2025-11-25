@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class Adducteur extends ExerciceMachine {
@@ -19,6 +20,8 @@ public class Adducteur extends ExerciceMachine {
     }
 
     public VBox showExplanation() {
-        return new VBox();
+        VBox box = new VBox(new Label("Gros pipi !"));
+        box.setStyle("-fx-padding: 20;");
+        return box;
     }
 }
