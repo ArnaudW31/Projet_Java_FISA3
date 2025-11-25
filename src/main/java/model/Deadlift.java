@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class Deadlift extends ExerciceAvecHalteres{
@@ -12,14 +13,15 @@ public class Deadlift extends ExerciceAvecHalteres{
             new Muscle("Jambes", Deadlift.class.getResource("/images/muscles/jambes.png").toExternalForm()),
             new Muscle("Fessiers", Deadlift.class.getResource("/images/muscles/fessiers.png").toExternalForm())
         ),
-        "1. Tenez-vous debout, les pieds écartés à la largeur des hanches, en tenant une barre devant vous.\n" +
-        "2. Fléchissez les hanches et les genoux pour abaisser votre corps et saisir la barre avec une prise en pronation (paumes vers vous).\n" +
-        "3. Gardez le dos droit et les abdominaux engagés, puis poussez sur vos talons pour soulever la barre en redressant votre corps.\n" +
-        "4. Abaissez lentement la barre en fléchissant les hanches et les genoux jusqu'à ce qu'elle touche le sol.\n" +
-        "5. Répétez pour le nombre de répétitions souhaité.", false, 0);
+        "La baaaaaaaaaaaaaaaase", false, 0);
     }
 
     public VBox showExplanation() {
-        return new VBox();
+        VBox box = new VBox(new Label("1. Tenez-vous debout, les pieds écartés à la largeur des hanches, en tenant une barre devant vous.\n" +
+        "2. Fléchissez les hanches et les genoux pour abaisser votre corps et saisir la barre avec une prise en pronation (paumes vers vous).\n" +
+        "3. Gardez le dos droit et les abdominaux engagés, puis poussez sur vos talons pour soulever la barre en redressant votre corps.\n" +
+        "4. Abaissez lentement la barre en fléchissant les hanches et les genoux jusqu'à ce qu'elle touche le sol.\n" +
+        "5. Répétez pour le nombre de répétitions souhaité."));
+        return box;
     }    
 }

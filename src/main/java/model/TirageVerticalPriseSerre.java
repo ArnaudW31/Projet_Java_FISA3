@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class TirageVerticalPriseSerre extends ExerciceMachine {
@@ -12,14 +13,15 @@ public class TirageVerticalPriseSerre extends ExerciceMachine {
             new Muscle("Biceps brachial", TirageVerticalPriseSerre.class.getResource("/images/muscles/biceps_brachial.png").toExternalForm()),
             new Muscle("Trapèze moyen", TirageVerticalPriseSerre.class.getResource("/images/muscles/trapeze_moyen.png").toExternalForm())
         ), 
-        "1. Asseyez-vous sur la machine de tirage vertical avec une prise serrée (paumes vers vous) sur la barre.\n" +
-        "2. Tirez la barre vers le bas jusqu'à ce qu'elle atteigne le haut de votre poitrine, en gardant le dos droit.\n" +
-        "3. Contrôlez la montée de la barre jusqu'à la position de départ.\n" +
-        "4. Répétez pour le nombre de répétitions souhaité.");
+        "Tu tires à la verticale");
     }
 
     public VBox showExplanation() {
-        return new VBox();
+        VBox box = new VBox(new Label("1. Asseyez-vous sur la machine de tirage vertical avec une prise serrée (paumes vers vous) sur la barre.\n" +
+        "2. Tirez la barre vers le bas jusqu'à ce qu'elle atteigne le haut de votre poitrine, en gardant le dos droit.\n" +
+        "3. Contrôlez la montée de la barre jusqu'à la position de départ.\n" +
+        "4. Répétez pour le nombre de répétitions souhaité."));
+        return box;
     }
     
 }
