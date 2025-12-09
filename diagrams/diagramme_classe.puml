@@ -1,0 +1,245 @@
+@startuml
+' Diagramme de classes généré à partir du code source
+' Packages: app, controller, dao, model
+
+package app {
+  class Main {
+    - URL: String {static, final} = "jdbc:sqlite:musculation.db" // note: constant DB url shown for context
+    + start(stage: Stage) : void
+    - initDatabaseIfNeeded() : void
+    - getResource(path: String) : java.net.URL {static}
+    + main(args: String[]) : void
+  }
+}
+
+package controller {
+  class MainController {
+    - listExercices: javafx.scene.control.ListView<model.Exercice>
+    - listMuscles: javafx.scene.control.ListView<model.Muscle>
+    - lineChart: javafx.scene.chart.LineChart<String, Number>
+    - datePicker: javafx.scene.control.DatePicker
+    - poidsField: javafx.scene.control.TextField
+    - repsField: javafx.scene.control.TextField
+    - messageLabel: javafx.scene.control.Label
+    - rootPane: javafx.scene.layout.BorderPane
+    - chartContainer: javafx.scene.layout.VBox
+    - showedExplanation: boolean
+    + initialize() : void
+    - afficherCourbe(ex: model.Exercice) : void
+    + ajouterPerformance() : void
+    + afficherCustomScene() : void
+    + afficherChart() : void
+  }
+}
+
+package dao {
+  class Database {
+    - URL: String {static, final}
+    + getConnection() : java.sql.Connection
+  }
+
+  class ExerciceDAO {
+    + getAll() : java.util.List<model.Exercice>
+    + findById(id: int) : model.Exercice
+  }
+
+  class PerformanceDAO {
+    + getByExerciceId(idExercice: int) : java.util.List<model.Performance>
+    + insertPerformance(perf: model.Performance) : boolean
+  }
+}
+
+package model {
+  abstract class Exercice {
+    - id: int
+    - nom: String
+    - muscles: java.util.List<Muscle>
+    - description: String
+    + getId() : int
+    + setId(id: int) : void
+    + getNom() : String
+    + setNom(nom: String) : void
+    + getMuscles() : java.util.List<Muscle>
+    + setMuscles(m: java.util.List<Muscle>) : void
+    + getDescription() : String
+    + setDescription(d: String) : void
+    + toString() : String
+    + showExplanation() : javafx.scene.layout.VBox {abstract}
+  }
+
+  abstract class ExerciceMachine {
+    + ExerciceMachine(id: int, nom: String, muscles: java.util.List<Muscle>, description: String)
+  }
+
+  abstract class ExerciceAvecHalteres {
+    - banc: boolean
+    - inclinaisonBanc: int
+    + hasBanc() : boolean
+    + setBanc(b: boolean) : void
+    + getInclinaisonBanc() : int
+    + setInclinaisonBanc(i: int) : void
+  }
+
+  abstract class ExercicePoulie {
+    - prisePoulie: String
+    - hauteurPoulie: int
+    + getHauteurPoulie() : int
+    + setHauteurPoulie(h: int) : void
+    + getPrisePoulie() : String
+    + setNom(p: String) : void
+  }
+
+  abstract class ExercicePoidsDuCorps {
+    - leste: boolean
+    + isLeste() : boolean
+    + setLeste(l: boolean) : void
+  }
+
+  class Muscle {
+    - nom: String
+    - illustrationImage: javafx.scene.image.Image
+    + Muscle(nom: String, imagePath: String)
+    + getNom() : String
+    + setNom(n: String) : void
+    + getIllustrationImage() : javafx.scene.image.Image
+    + setIllustrationImage(i: javafx.scene.image.Image) : void
+  }
+
+  class Performance {
+    - id: int
+    - idExercice: int
+    - date: java.time.LocalDate
+    - poids: double
+    - repetitions: int
+    + Performance()
+    + Performance(id: int, idExercice: int, date: java.time.LocalDate, poids: double, repetitions: int)
+    + Performance(idExercice: int, date: java.time.LocalDate, poids: double, repetitions: int)
+    + getId() : int
+    + setId(id: int) : void
+    + getIdExercice() : int
+    + setIdExercice(id: int) : void
+    + getDate() : java.time.LocalDate
+    + setDate(d: java.time.LocalDate) : void
+    + getPoids() : double
+    + setPoids(p: double) : void
+    + getRepetitions() : int
+    + setRepetitions(r: int) : void
+  }
+
+  ' Sous-classes concrètes (constructeurs + showExplanation)
+  class Adducteur {
+    + Adducteur(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class ArriereEpaulePoulie {
+    + ArriereEpaulePoulie(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class CurlBicepsHalteres {
+    + CurlBicepsHalteres(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class CurlMarteauPoulie {
+    + CurlMarteauPoulie(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class Deadlift {
+    + Deadlift(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class DeveloppeCouche {
+    + DeveloppeCouche(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class DeveloppeIncline {
+    + DeveloppeIncline(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class DeveloppeMilitaire {
+    + DeveloppeMilitaire(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class ElevationLateral {
+    + ElevationLateral(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class ExtensionMollet {
+    + ExtensionMollet(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class ExtentionTricepsPoulie {
+    + ExtentionTricepsPoulie(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class LegCurl {
+    + LegCurl(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class LegExtension {
+    + LegExtension(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class Presse {
+    + Presse(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class Squat {
+    + Squat(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class TirageHorizontal {
+    + TirageHorizontal(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class TiragePoulieBasse {
+    + TiragePoulieBasse(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class TiragePoulieHaute {
+    + TiragePoulieHaute(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class TirageVerticalPriseSerre {
+    + TirageVerticalPriseSerre(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+  class Traction {
+    + Traction(id: int, nom: String)
+    + showExplanation() : javafx.scene.layout.VBox
+  }
+}
+
+' Héritages
+Adducteur --|> ExerciceMachine
+ArriereEpaulePoulie --|> ExercicePoulie
+CurlBicepsHalteres --|> ExerciceAvecHalteres
+CurlMarteauPoulie --|> ExercicePoulie
+Deadlift --|> ExerciceAvecHalteres
+DeveloppeCouche --|> ExerciceAvecHalteres
+DeveloppeIncline --|> ExerciceAvecHalteres
+DeveloppeMilitaire --|> ExerciceAvecHalteres
+ElevationLateral --|> ExercicePoulie
+ExtensionMollet --|> ExercicePoidsDuCorps
+ExtentionTricepsPoulie --|> ExercicePoulie
+LegCurl --|> ExerciceMachine
+LegExtension --|> ExerciceMachine
+Presse --|> ExerciceMachine
+Squat --|> ExerciceAvecHalteres
+TirageHorizontal --|> ExerciceMachine
+TiragePoulieBasse --|> ExercicePoulie
+TiragePoulieHaute --|> ExercicePoulie
+TirageVerticalPriseSerre --|> ExerciceMachine
+Traction --|> ExercicePoidsDuCorps
+
+' Relations / dépendances
+controller.MainController ..> dao.ExerciceDAO : uses
+controller.MainController ..> dao.PerformanceDAO : uses
+controller.MainController ..> model.Exercice : displays
+controller.MainController ..> model.Muscle : displays
+dao.ExerciceDAO ..> dao.Database : uses
+dao.PerformanceDAO ..> dao.Database : uses
+model.Exercice "1" *-- "0..*" model.Muscle : contains
+model.Exercice "1" <-- "0..*" model.Performance : has
+model.Performance --> model.Exercice : for
+
+@enduml
