@@ -5,8 +5,14 @@ import dao.PerformanceDAO;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.chart.*;
 import model.Exercice;
+import model.Muscle;
 import model.Performance;
 
 import java.time.LocalDate;
@@ -16,23 +22,37 @@ import java.util.List;
 public class MainController {
 
     @FXML private ListView<Exercice> listExercices;
+    @FXML private ListView<Muscle> listMuscles;
     @FXML private LineChart<String, Number> lineChart;
     @FXML private DatePicker datePicker;
     @FXML private TextField poidsField;
     @FXML private TextField repsField;
     @FXML private Label messageLabel;
+    @FXML private BorderPane rootPane;
+    @FXML private VBox chartContainer;
+
+    private boolean showedExplanation;
 
     @FXML
     public void initialize() {
+        this.showedExplanation = false;
         // Charger les exercices depuis la BDD
         listExercices.getItems().setAll(ExerciceDAO.getAll());
 
         // Listener selection
         listExercices.getSelectionModel().selectedItemProperty().addListener((obs, oldEx, newEx) -> {
             if (newEx != null) {
+                listMuscles.getItems().setAll(newEx.getMuscles());
                 afficherCourbe(newEx);
+                if (this.showedExplanation){
+                    rootPane.setCenter(newEx.showExplanation());
+                }
+                else{
+                    rootPane.setCenter(chartContainer);
+                }
             } else {
                 lineChart.getData().clear();
+                listMuscles.getItems().clear();
             }
             messageLabel.setText("");
         });
@@ -41,6 +61,41 @@ public class MainController {
         if (!listExercices.getItems().isEmpty()) {
             Platform.runLater(() -> listExercices.getSelectionModel().selectFirst());
         }
+
+        listMuscles.setCellFactory(lv -> new ListCell<>() {
+
+            private final ImageView imageView = new ImageView();
+            private final Label nameLabel = new Label();
+            private final HBox container = new HBox(8);
+
+            {
+                imageView.setFitHeight(60);
+                imageView.setPreserveRatio(true);
+                container.getChildren().addAll(imageView, nameLabel);
+                container.setPrefWidth(600);
+            }
+
+            @Override
+            protected void updateItem(Muscle m, boolean empty) {
+                super.updateItem(m, empty);
+
+                if (empty || m == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                nameLabel.setText(m.getNom());
+
+                try {
+                    Image img = m.getIllustrationImage();
+                    imageView.setImage(img);
+                } catch (Exception e) {
+                    System.err.println("Image introuvable : " + m.getIllustrationImage().getUrl());
+                }
+
+                setGraphic(container);
+            }
+        });
     }
 
     private void afficherCourbe(Exercice ex) {
@@ -144,45 +199,59 @@ public class MainController {
         }
     }
 
-    // Méthodes supplémentaires : ajouter/supprimer exercice (optionnel)
+    //Pour remplacer la vue centrale par la scène custom par exercice
     @FXML
-    private void ouvrirDialogAjoutExercice() {
-        // Implémentation minimale : ouvrir un dialog simple pour ajouter un exercice.
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Ajouter exercice");
-        dialog.setHeaderText("Nom de l'exercice:");
-        dialog.setContentText("Nom:");
-        dialog.showAndWait().ifPresent(name -> {
-            if (name.trim().isEmpty()) return;
-            // Insert minimal via DB
-            try (var conn = dao.Database.getConnection();
-                 var ps = conn.prepareStatement("INSERT INTO exercice (nom) VALUES (?)")) {
-                ps.setString(1, name.trim());
-                ps.executeUpdate();
-                // recharger la liste
-                listExercices.getItems().setAll(ExerciceDAO.getAll());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+    public void afficherCustomScene() {
+        Exercice ex = listExercices.getSelectionModel().getSelectedItem();
+        if (ex != null)
+            rootPane.setCenter(ex.showExplanation());
     }
 
+    // Pour revenir au graphique original
     @FXML
-    private void supprimerExercice() {
-        Exercice ex = listExercices.getSelectionModel().getSelectedItem();
-        if (ex == null) return;
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + ex.getNom() + " ?", ButtonType.YES, ButtonType.NO);
-        confirm.showAndWait().ifPresent(bt -> {
-            if (bt == ButtonType.YES) {
-                try (var conn = dao.Database.getConnection();
-                     var ps = conn.prepareStatement("DELETE FROM exercice WHERE id_exercice = ?")) {
-                    ps.setInt(1, ex.getId());
-                    ps.executeUpdate();
-                    listExercices.getItems().setAll(ExerciceDAO.getAll());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+    public void afficherChart() {
+        rootPane.setCenter(chartContainer);
     }
+
+    // // Méthodes supplémentaires : ajouter/supprimer exercice (optionnel)
+    // @FXML
+    // private void ouvrirDialogAjoutExercice() {
+    //     // Implémentation minimale : ouvrir un dialog simple pour ajouter un exercice.
+    //     TextInputDialog dialog = new TextInputDialog();
+    //     dialog.setTitle("Ajouter exercice");
+    //     dialog.setHeaderText("Nom de l'exercice:");
+    //     dialog.setContentText("Nom:");
+    //     dialog.showAndWait().ifPresent(name -> {
+    //         if (name.trim().isEmpty()) return;
+    //         // Insert minimal via DB
+    //         try (var conn = dao.Database.getConnection();
+    //              var ps = conn.prepareStatement("INSERT INTO exercice (nom) VALUES (?)")) {
+    //             ps.setString(1, name.trim());
+    //             ps.executeUpdate();
+    //             // recharger la liste
+    //             listExercices.getItems().setAll(ExerciceDAO.getAll());
+    //         } catch (Exception e) {
+    //             e.printStackTrace();
+    //         }
+    //     });
+    // }
+
+    // @FXML
+    // private void supprimerExercice() {
+    //     Exercice ex = listExercices.getSelectionModel().getSelectedItem();
+    //     if (ex == null) return;
+    //     Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + ex.getNom() + " ?", ButtonType.YES, ButtonType.NO);
+    //     confirm.showAndWait().ifPresent(bt -> {
+    //         if (bt == ButtonType.YES) {
+    //             try (var conn = dao.Database.getConnection();
+    //                  var ps = conn.prepareStatement("DELETE FROM exercice WHERE id_exercice = ?")) {
+    //                 ps.setInt(1, ex.getId());
+    //                 ps.executeUpdate();
+    //                 listExercices.getItems().setAll(ExerciceDAO.getAll());
+    //             } catch (Exception e) {
+    //                 e.printStackTrace();
+    //             }
+    //         }
+    //     });
+    // }
 }
