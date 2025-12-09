@@ -10,7 +10,7 @@ public class DeveloppeIncline extends ExerciceAvecHalteres {
         super(id, nom,
         java.util.Arrays.asList(
             new Muscle("Deltoide antérieur", DeveloppeIncline.class.getResource("/images/muscles/deltoides.png").toExternalForm()),
-            new Muscle("Triceps brachial", DeveloppeIncline.class.getResource("/images/muscles/triceps.png").toExternalForm()),
+            new Muscle("Triceps brachial", DeveloppeIncline.class.getResource("/images/muscles/triceps.jpg").toExternalForm()),
             new Muscle("Pectoraux", DeveloppeIncline.class.getResource("/images/muscles/pectoraux.png").toExternalForm())
         ),
         "Pareil que l'autre mais incliné", true,  3);

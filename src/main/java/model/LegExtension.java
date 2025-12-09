@@ -9,7 +9,7 @@ public class LegExtension extends ExerciceMachine {
     public LegExtension(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Quadriceps", LegExtension.class.getResource("/images/muscles/quadriceps.png").toExternalForm())
+            new Muscle("Quadriceps", LegExtension.class.getResource("/images/muscles/quadriceps.jpg").toExternalForm())
         ),
         "LegExtension");
     }

@@ -9,7 +9,7 @@ public class Presse extends ExerciceMachine {
     public Presse(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Quadriceps", Presse.class.getResource("/images/muscles/quadriceps.png").toExternalForm()),
+            new Muscle("Quadriceps", Presse.class.getResource("/images/muscles/quadriceps.jpg").toExternalForm()),
             new Muscle("Ischio-jambiers", Presse.class.getResource("/images/muscles/ischio_jambiers.png").toExternalForm()),
             new Muscle("Fessiers", Presse.class.getResource("/images/muscles/fessiers.png").toExternalForm())
         ),

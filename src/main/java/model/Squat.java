@@ -9,7 +9,7 @@ public class Squat extends ExerciceAvecHalteres {
     public Squat(int id, String nom) {
         super(id, nom,
             java.util.Arrays.asList(
-                new Muscle("Quadriceps", Squat.class.getResource("/images/muscles/quadriceps.png").toExternalForm()),
+                new Muscle("Quadriceps", Squat.class.getResource("/images/muscles/quadriceps.jpg").toExternalForm()),
                 new Muscle("Fessiers", Squat.class.getResource("/images/muscles/fessiers.png").toExternalForm()),
                 new Muscle("Ischio-jambiers", Squat.class.getResource("/images/muscles/ischio_jambiers.png").toExternalForm())
             ),

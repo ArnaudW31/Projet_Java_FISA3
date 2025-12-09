@@ -10,7 +10,7 @@ public class Deadlift extends ExerciceAvecHalteres{
         super(id, nom,
         java.util.Arrays.asList(
             new Muscle("Dos", Deadlift.class.getResource("/images/muscles/dos.png").toExternalForm()),
-            new Muscle("Jambes", Deadlift.class.getResource("/images/muscles/jambes.png").toExternalForm()),
+            new Muscle("Jambes", Deadlift.class.getResource("/images/muscles/jambes.jpg").toExternalForm()),
             new Muscle("Fessiers", Deadlift.class.getResource("/images/muscles/fessiers.png").toExternalForm())
         ),
         "La baaaaaaaaaaaaaaaase", false, 0);

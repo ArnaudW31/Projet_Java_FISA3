@@ -9,7 +9,7 @@ public class ExtentionTricepsPoulie extends ExercicePoulie {
     public ExtentionTricepsPoulie(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Triceps", ExtentionTricepsPoulie.class.getResource("/images/muscles/triceps.png").toExternalForm())
+            new Muscle("Triceps", ExtentionTricepsPoulie.class.getResource("/images/muscles/triceps.jpg").toExternalForm())
         ),
         "Tu étends les tricpes sur une poulie fin pas compliqué", "prise pronation",  18);
     }

@@ -10,7 +10,7 @@ public class DeveloppeCouche extends ExerciceAvecHalteres {
         super(id, nom,
         java.util.Arrays.asList(
             new Muscle("Pectoraux", DeveloppeCouche.class.getResource("/images/muscles/pectoraux.png").toExternalForm()),
-            new Muscle("Triceps", DeveloppeCouche.class.getResource("/images/muscles/triceps.png").toExternalForm()),
+            new Muscle("Triceps", DeveloppeCouche.class.getResource("/images/muscles/triceps.jpg").toExternalForm()),
             new Muscle("Deltoides", DeveloppeCouche.class.getResource("/images/muscles/deltoides.png").toExternalForm())
         ),
         "Pour faire gonfler les pecs", true,  0);

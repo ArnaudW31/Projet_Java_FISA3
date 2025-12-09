@@ -10,7 +10,7 @@ public class DeveloppeMilitaire extends ExerciceAvecHalteres {
         super(id, nom,
         java.util.Arrays.asList(
             new Muscle("Deltoide", DeveloppeMilitaire.class.getResource("/images/muscles/deltoides.png").toExternalForm()),
-            new Muscle("Triceps", DeveloppeMilitaire.class.getResource("/images/muscles/triceps.png").toExternalForm())
+            new Muscle("Triceps", DeveloppeMilitaire.class.getResource("/images/muscles/triceps.jpg").toExternalForm())
         ),
         "Pareil que l'autre mais que pour les militaires", true,  2);
     }
