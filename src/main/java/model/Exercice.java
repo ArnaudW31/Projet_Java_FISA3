@@ -31,6 +31,7 @@ public abstract class Exercice {
     public void setDescription(String description) { this.description = description; }
 
     @Override
+    
     public String toString() {
         // utilisé pour ListView
         return nom;
