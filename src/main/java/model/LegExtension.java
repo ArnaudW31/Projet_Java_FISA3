@@ -1,6 +1,7 @@
 package model;
 
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class LegExtension extends ExerciceMachine {
 
@@ -8,16 +9,17 @@ public class LegExtension extends ExerciceMachine {
     public LegExtension(int id, String nom) {
         super(id, nom,
         java.util.Arrays.asList(
-            new Muscle("Quadriceps", "images/muscles/quadriceps.png")
+            new Muscle("Quadriceps", LegExtension.class.getResource("/images/muscles/quadriceps.png").toExternalForm())
         ),
-        "1. Asseyez-vous sur la machine d'extension des jambes, les pieds sous les coussins prévus à cet effet.\n" +
-        "2. Poussez les coussins avec vos jambes en étendant complètement vos genoux.\n" +
-        "3. Contrôlez la descente des coussins jusqu'à la position de départ.\n" +
-        "4. Répétez pour le nombre de répétitions souhaité.");
+        "LegExtension");
     }
 
-    public Scene showExplanation() {
-        return new Scene(null);
+    public VBox showExplanation() {
+        VBox box = new VBox(new Label("1. Asseyez-vous sur la machine d'extension des jambes, les pieds sous les coussins prévus à cet effet.\n" +
+        "2. Poussez les coussins avec vos jambes en étendant complètement vos genoux.\n" +
+        "3. Contrôlez la descente des coussins jusqu'à la position de départ.\n" +
+        "4. Répétez pour le nombre de répétitions souhaité."));
+        return box;
     }
     
 }

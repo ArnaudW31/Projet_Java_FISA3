@@ -16,9 +16,26 @@ CREATE TABLE IF NOT EXISTS performance (
 );
 
 -- Exemple de données
-INSERT INTO exercice (nom, categorie, description) VALUES ('Développé couché', 'Pecs', 'Barre, couché');
-INSERT INTO exercice (nom, categorie, description) VALUES ('Squat', 'Jambes', 'Back squat');
-INSERT INTO exercice (nom, categorie, description) VALUES ('Soulevé de terre', 'Dos', 'Deadlift');
+INSERT INTO exercice (nom) VALUES ('adducteur');
+INSERT INTO exercice (nom) VALUES ('arriereepaulepoulie');
+INSERT INTO exercice (nom) VALUES ('curlbicepshaltere');
+INSERT INTO exercice (nom) VALUES ('curlmarteaupoulie');
+INSERT INTO exercice (nom) VALUES ('deadlift');
+INSERT INTO exercice (nom) VALUES ('developpecouche');
+INSERT INTO exercice (nom) VALUES ('developpeincline');
+INSERT INTO exercice (nom) VALUES ('developpemilitaire');
+INSERT INTO exercice (nom) VALUES ('elevationlateral');
+INSERT INTO exercice (nom) VALUES ('extensionmollet');
+INSERT INTO exercice (nom) VALUES ('extentiontricepspoulie');
+INSERT INTO exercice (nom) VALUES ('legcurl');
+INSERT INTO exercice (nom) VALUES ('legextension');
+INSERT INTO exercice (nom) VALUES ('presse');
+INSERT INTO exercice (nom) VALUES ('squat');
+INSERT INTO exercice (nom) VALUES ('tiragehorizontal');
+INSERT INTO exercice (nom) VALUES ('tiragepouliebasse');
+INSERT INTO exercice (nom) VALUES ('tiragepouliehaute');
+INSERT INTO exercice (nom) VALUES ('tirageverticalpriseserre');
+INSERT INTO exercice (nom) VALUES ('traction');
 
 -- Quelques performances exemple
 INSERT INTO performance (id_exercice, date, poids, repetitions) VALUES (1,'2025-09-01',70,8);

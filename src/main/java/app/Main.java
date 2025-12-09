@@ -6,10 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class Main extends Application {
 
@@ -33,13 +32,11 @@ public class Main extends Application {
     private void initDatabaseIfNeeded() {
         // Tente de créer les tables si elles n'existent pas
         try (Connection conn = Database.getConnection();
-             Statement st = conn.createStatement()) {
+            Statement st = conn.createStatement()) {
 
             String createExercice = "CREATE TABLE IF NOT EXISTS exercice (" +
                     "id_exercice INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "nom TEXT NOT NULL," +
-                    "categorie TEXT," +
-                    "description TEXT" +
+                    "nom TEXT NOT NULL" +
                     ");";
 
             String createPerf = "CREATE TABLE IF NOT EXISTS performance (" +
@@ -51,21 +48,58 @@ public class Main extends Application {
                     "FOREIGN KEY (id_exercice) REFERENCES exercice(id_exercice)" +
                     ");";
 
+            String sql = "SELECT id_exercice, nom FROM exercice ORDER BY nom";
+
             st.execute(createExercice);
             st.execute(createPerf);
 
-            // Optionnel: si tu veux initialiser depuis sql/init.sql placé dans resources/sql/init.sql
-            InputStream is = getClass().getResourceAsStream("/sql/init.sql");
-            if (is != null) {
-                String sql = new Scanner(is).useDelimiter("\\A").next();
-                // split par ; et exécuter statements simples
-                for (String stmt : sql.split(";")) {
-                    String t = stmt.trim();
-                    if (!t.isEmpty()) {
-                        st.execute(t);
-                    }
-                }
+            ResultSet rs = st.executeQuery(sql);
+
+            // si on a pas au moins 1 ligne
+            if (!rs.next()){
+                String fillExercice = "INSERT INTO exercice (nom) VALUES ('adducteur');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('arriereepaulepoulie');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('curlbicepshaltere');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('curlmarteaupoulie');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('deadlift');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('developpecouche');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('developpeincline');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('developpemilitaire');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('elevationlateral');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('extensionmollet');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('extentiontricepspoulie');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('legcurl');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('legextension');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('presse');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('squat');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('tiragehorizontal');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('tiragepouliebasse');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('tiragepouliehaute');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('tirageverticalpriseserre');";
+                st.execute(fillExercice);
+                fillExercice = "INSERT INTO exercice (nom) VALUES ('traction');";
+
+                st.execute(fillExercice);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

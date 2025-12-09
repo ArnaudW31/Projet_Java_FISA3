@@ -1,6 +1,7 @@
 package model;
 
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class Traction extends ExercicePoidsDuCorps {
 
@@ -8,18 +9,19 @@ public class Traction extends ExercicePoidsDuCorps {
     public Traction(int id, String nom) {
         super(id, nom,
               java.util.Arrays.asList(
-                  new Muscle("Grand dorsal", "path/to/grand_dorsal_image.png"),
-                  new Muscle("Biceps brachial", "path/to/biceps_brachial_image.png")
+                  new Muscle("Grand dorsal", Traction.class.getResource("/images/muscles/grand_dorsal.png").toExternalForm()),
+                  new Muscle("Biceps brachial", Traction.class.getResource("/images/muscles/biceps_brachial.png").toExternalForm())
               ),
-              "1. Saisissez la barre avec une prise en supination (paumes vers vous), les mains écartées à la largeur des épaules.\n" +
+              "SUR DU GRADUR", true);
+    }
+
+    public VBox showExplanation() {
+        VBox box = new VBox(new Label("1. Saisissez la barre avec une prise en supination (paumes vers vous), les mains écartées à la largeur des épaules.\n" +
                "2. Suspendez-vous à la barre avec les bras complètement tendus et les jambes croisées derrière vous.\n" +
                "3. Tirez votre corps vers le haut en fléchissant les coudes jusqu'à ce que votre menton dépasse la barre.\n" +
                "4. Redescendez lentement à la position de départ avec un contrôle total.\n" +
-               "5. Répétez pour le nombre de répétitions souhaité.", true);
-    }
-
-    public Scene showExplanation() {
-        return new Scene(null);
+               "5. Répétez pour le nombre de répétitions souhaité."));
+        return box;
     }
     
 }
